@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+out/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+
+# Electron specific
+*.asar
+
+# Temp files
+*.tmp
+*.temp
+
+# Electron build artifacts (keep source only)
+*.dll
+*.pak
+*.bin
+*.dat
+locales/
+resources/
+
+# Compiled exe (source code only for repo)
+*.exe
+
+# Keep extracted source folder
+!extracted/

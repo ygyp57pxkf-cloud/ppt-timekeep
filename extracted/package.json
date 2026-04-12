@@ -1,0 +1,12 @@
+{
+  "name": "timekeeper",
+  "version": "1.0.0",
+  "description": "PPT演示计时器",
+  "main": "main.js",
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "electron-store": "^11.0.2"
+  }
+}

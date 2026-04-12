@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Time's Up</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        #alert-text {
+            color: #ff0000;
+            font-size: 15vw;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
+            animation: flash 1s infinite;
+            user-select: none;
+        }
+        @keyframes flash {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div id="alert-text">Time's Up!</div>
+    <script>
+        const { ipcRenderer } = require('electron');
+        
+        // Play ding sound
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playDing() {
+            try {
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                const oscillator = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(800, audioCtx.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.5);
+                gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                oscillator.start();
+                oscillator.stop(audioCtx.currentTime + 0.5);
+            } catch (e) {
+                console.error("Audio playback failed", e);
+            }
+        }
+        
+        // Play sound on load
+        playDing();
+        
+        // Click anywhere to close
+        document.body.addEventListener('click', () => {
+            ipcRenderer.send('close-alert-window');
+        });
+    </script>
+</body>
+</html>

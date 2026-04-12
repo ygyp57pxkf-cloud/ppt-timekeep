@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>PPT Timer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="timer-container">
+        <div id="timer-display">00:00</div>
+    </div>
+
+    <!-- Custom Time Input Modal -->
+    <div id="custom-time-modal" class="hidden" style="
+        position: fixed; 
+        top: 0; left: 0; width: 100%; height: 100%; 
+        background: rgba(0,0,0,0.8); 
+        z-index: 2000; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        flex-direction: column;">
+        <h2 style="color: white; font-family: sans-serif; margin-bottom: 20px;">Set Timer (Minutes)</h2>
+        <input type="number" id="custom-time-input" min="1" max="999" style="
+            font-size: 24px; 
+            padding: 10px; 
+            width: 150px; 
+            text-align: center; 
+            border: none; 
+            border-radius: 5px;
+            margin-bottom: 20px;">
+        <div>
+            <button id="custom-time-ok" style="font-size: 18px; padding: 10px 20px; cursor: pointer; margin-right: 10px;">OK</button>
+            <button id="custom-time-cancel" style="font-size: 18px; padding: 10px 20px; cursor: pointer;">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Audio Element for "Ding" sound -->
+    <!-- We will generate a beep or use a placeholder if file not found -->
+    <script src="renderer.js"></script>
+</body>
+</html>

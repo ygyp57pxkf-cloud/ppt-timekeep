@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: transparent;
+    font-family: 'Arial', sans-serif;
+    user-select: none;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#timer-container {
+    background-color: transparent; 
+    transition: background-color 0.3s;
+    white-space: nowrap;
+    padding: 20px; /* Buffer area for easier grabbing */
+    /* Ensure content is centered and doesn't collapse */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#timer-display {
+    font-size: 150px; /* Default size */
+    font-weight: bold;
+    color: #00ff00; /* Default Green */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    cursor: grab; /* Indicate draggable */
+}
+
+#timer-display:active {
+    cursor: grabbing;
+}
+
+/* Color States */
+.color-green { color: #00ff00 !important; }
+.color-yellow { color: #ffff00 !important; }
+.color-red { color: #ff0000 !important; }
+
+.hidden {
+    display: none !important;
+}
+
+/* Custom Time Input Modal */
+#custom-time-modal {
+    /* Styles are inline in HTML, but can be moved here if needed */
+}
