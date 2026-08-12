@@ -85,7 +85,7 @@ ISC
 
 ## 作者
 
-Sika
+kinter
 
 ---
 
